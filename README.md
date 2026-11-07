@@ -4,6 +4,17 @@
 
 An original, single-player-first motorsport management game prototype designed for mobile and desktop browsers.
 
+## Version 0.6.0 — Rival Teams & Championship Depth
+
+- Three rival teams now have named drivers, distinct racing identities, strengths, tyre wear profiles, and strategic pit windows.
+- Rival pace responds to circuit characteristics, tyre condition, and compound choice.
+- Rival teams make their own planned pit stops during the race, with timing trade-offs.
+- Expanded the championship from five to eight original circuits, adding Forest 400, Sunset Sprint, and Capital Grand Prix.
+- Season-to-season career progression: complete an eight-round campaign and launch a new season while retaining car development, staff, facilities, driver growth, credits, reputation, and career points.
+- Rival intelligence cards show each team, driver, specialist identity, and current-season points.
+- Race results now include best-lap and average-lap analysis.
+- Version 0.5 race setup, compounds, safety car, telemetry, and all prior management systems retained.
+
 ## Version 0.5.0 — Deeper Race Simulation
 
 - Pre-race car setup choices for front wing, suspension and gearing, with circuit-sensitive performance trade-offs.
@@ -36,7 +47,7 @@ An original, single-player-first motorsport management game prototype designed f
 
 ## Run it
 
-Open `index.html` in a modern browser. No build tools or dependencies are required. Progress is saved in the current browser/device using local storage. Existing Version 0.4 career saves are migrated when available.
+Open `index.html` in a modern browser. No build tools or dependencies are required. Progress is saved in the current browser/device using local storage. Existing Version 0.5 career saves are migrated when available.
 
 ## Files
 
@@ -53,11 +64,11 @@ Open `index.html` in a modern browser. No build tools or dependencies are requir
 
 ## Roadmap
 
-### 0.6 — Rival Teams & Championship Depth
-- More distinctive rival team strengths and driver profiles.
-- Smarter pit windows and compound choices for rival teams.
-- Expanded championship calendar and season-to-season progression.
-- Improved race balance and deeper result analysis.
+### 0.7 — Career & Race Presentation
+- Deeper driver market and rival-driver progression.
+- More varied race-control incidents and strategy outcomes.
+- Expanded season objectives, awards, and career records.
+- Additional visual polish and mobile usability improvements.
 
 ### Later
 - Cloud saves and account-based progression.
