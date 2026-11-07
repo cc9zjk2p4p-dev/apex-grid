@@ -53,17 +53,11 @@ Open `index.html` in a modern browser. No build tools or dependencies are requir
 
 ## Roadmap
 
-### 0.4 — Drivers & Team Operations
-- Driver attributes, experience, and development progression.
-- Staff roles and facility upgrades.
-- Sponsorship objectives, contracts, and rewards.
-- Team reputation and season objectives.
-
-### 0.5 — Deeper Race Simulation
-- More detailed car setup and tyre compounds.
-- Safety car and incident events.
-- Improved rival strategy and race telemetry.
-- Expanded calendar and race-result history.
+### 0.6 — Rival Teams & Championship Depth
+- More distinctive rival team strengths and driver profiles.
+- Smarter pit windows and compound choices for rival teams.
+- Expanded championship calendar and season-to-season progression.
+- Improved race balance and deeper result analysis.
 
 ### Later
 - Cloud saves and account-based progression.
