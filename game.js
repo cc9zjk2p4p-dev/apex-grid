@@ -1,96 +1,27 @@
 (() => {
-const $ = id => document.getElementById(id);
-const canvas = $('track'), ctx = canvas.getContext('2d');
-const TOTAL = 12;
-let lap=0, energy=68, tyres=82, position=4, playerProgress=0, best=null, started=false, finished=false, lastCall='balanced', pitUsed=false;
-let rivals=[
- {name:'V. Kato',team:'NOVA',progress:0.16,color:'#ff5d58',pace:0.79},
- {name:'M. Silva',team:'VOLT',progress:0.10,color:'#ffb15c',pace:0.77},
- {name:'A. Reed',team:'ORBIT',progress:0.06,color:'#a78bfa',pace:0.75},
- {name:'YOU',team:'APEX GP',progress:0.04,color:'#c9f36b',pace:0.76,player:true},
- {name:'L. Chen',team:'NOVA',progress:0.01,color:'#6cc7e8',pace:0.73},
- {name:'J. Park',team:'VOLT',progress:0,color:'#e7e7e7',pace:0.71}
-];
-const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
-function pathPoint(t){
- const a=t*Math.PI*2;
- return {x:380+245*Math.cos(a)+36*Math.sin(2*a), y:213+142*Math.sin(a)};
-}
-function drawTrack(){
- ctx.clearRect(0,0,760,430);
- ctx.fillStyle='#14232a';ctx.fillRect(0,0,760,430);
- // subtle grid
- ctx.strokeStyle='#1c3036';ctx.lineWidth=1;
- for(let x=0;x<760;x+=38){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,430);ctx.stroke()}
- for(let y=0;y<430;y+=38){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(760,y);ctx.stroke()}
- const drawLoop=(width,color)=>{ctx.beginPath();for(let i=0;i<=240;i++){const p=pathPoint(i/240);i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y)}ctx.closePath();ctx.strokeStyle=color;ctx.lineWidth=width;ctx.stroke()};
- drawLoop(76,'#34434a');drawLoop(66,'#202b31');drawLoop(2,'#6d7d80');
- // kerbs
- for(let i=0;i<90;i+=2){const p=pathPoint(i/90);ctx.beginPath();ctx.arc(p.x,p.y,34,0,.13);ctx.strokeStyle=i%4?'#d85c55':'#eee';ctx.lineWidth=3;ctx.stroke()}
- // start line
- const s=pathPoint(0);ctx.save();ctx.translate(s.x,s.y);ctx.rotate(Math.PI/2);for(let i=0;i<6;i++){ctx.fillStyle=i%2?'#10151a':'#e9edf0';ctx.fillRect(-3,-31+i*10,6,10)}ctx.restore();
- // pit lane
- ctx.beginPath();ctx.moveTo(560,280);ctx.quadraticCurveTo(650,335,560,366);ctx.strokeStyle='#70b6ff';ctx.lineWidth=4;ctx.setLineDash([7,7]);ctx.stroke();ctx.setLineDash([]);
- ctx.fillStyle='#8fbde0';ctx.font='10px monospace';ctx.fillText('PIT',618,350);
- // cars
- const sorted=[...rivals].sort((a,b)=>a.progress-b.progress);
- sorted.forEach((r,idx)=>{
-  const p=pathPoint((r.progress%1+1)%1);
-  const tangent=pathPoint((r.progress+.002)%1);const angle=Math.atan2(tangent.y-p.y,tangent.x-p.x);
-  ctx.save();ctx.translate(p.x,p.y);ctx.rotate(angle);
-  ctx.fillStyle=r.color;ctx.shadowColor=r.color;ctx.shadowBlur=r.player?14:4;
-  ctx.beginPath();ctx.roundRect(-12,-5,24,10,3);ctx.fill();
-  ctx.fillStyle='#10151b';ctx.fillRect(-4,-4,9,8);ctx.restore();
-  if(r.player){ctx.fillStyle='#c9f36b';ctx.font='bold 11px monospace';ctx.fillText('YOU',p.x+13,p.y-12)}
- });
-}
-function render(){
- $('lap').innerHTML=String(Math.min(lap+1,TOTAL)).padStart(2,'0')+'<span>/12</span>';
- $('position').textContent='P'+position;
- $('energyNum').textContent=energy+'%';$('energyBar').style.width=energy+'%';
- $('tyres').textContent=tyres+'%';$('progress').style.width=(lap/TOTAL*100)+'%';
- $('best').textContent=best?best.toFixed(2)+'s':'—';
- const ahead=Math.max(0,position-1);
- $('gap').textContent=ahead?`+${(0.8+ahead*.55).toFixed(1)}s to P${position-1}`:'LEADING THE FIELD';
- $('status').textContent=finished?'CHEQUERED FLAG':started?'RACE IN PROGRESS':'FORMATION COMPLETE';
- const order=[...rivals].sort((a,b)=>b.progress-a.progress);
- $('leaderboard').innerHTML=order.map((r,i)=>`<div class="driver ${r.player?'me':''}"><b>${i+1}</b><span>${r.name} <small>· ${r.team}</small></span><span>${r.player?'YOU':(i===0?'LEADER':`+${(i*.8).toFixed(1)}s`)}</span></div>`).join('');
- drawTrack();
-}
-function say(text){$('radio').textContent='“'+text+'”'}
-function choose(mode){
- if(!started||finished){say('Start the race first, then make your strategy calls.');return}
- if(mode==='attack'){
-  if(energy<18){say('Energy reserve too low for attack mode. Recharge first.');return}
-  energy-=18;lastCall='attack';say('Attack mode deployed. Great exit speed — make it count!');
- }else if(mode==='conserve'){
-  energy=Math.min(100,energy+12);tyres=Math.min(100,tyres+2);lastCall='conserve';say('Managing the tyres. Keep it smooth and build energy for later.');
- }else{
-  if(pitUsed){say('We have already taken our stop. Stay out and push.');return}
-  pitUsed=true;tyres=100;playerProgress-=.055;lastCall='pit';say('Box, box! Fresh tyres fitted. You lose a little track position but gain grip.');
- }
-}
-function step(){
- if(!started){started=true;$('next').innerHTML='NEXT LAP <span>→</span>';say('Green light! Keep an eye on tyre life and energy.');}
- if(finished)return;
- const lapTime= (91.5 - (lastCall==='attack'?2.2:lastCall==='conserve'?-0.8:0) + (100-tyres)*.045 + Math.random()*1.2);
- best=best===null?lapTime:Math.min(best,lapTime);
- const paceBonus=lastCall==='attack'?.035:lastCall==='conserve'?.004:0;
- playerProgress+=.076+paceBonus+(energy>75?.004:0);
- rivals.forEach(r=>{if(!r.player)r.progress+=r.pace/12+(Math.random()-.45)*.006});
- energy=clamp(energy+(lastCall==='attack'?-4:lastCall==='conserve'?7:3),0,100);
- tyres=clamp(tyres-(lastCall==='attack'?9:lastCall==='conserve'?2:5),5,100);
- lap++;lastCall='balanced';
- // progress tracks full laps, keep player's race distance in the same units
- const me=rivals.find(r=>r.player);me.progress=playerProgress;
- position=1+rivals.filter(r=>!r.player&&r.progress>playerProgress).length;
- if(lap>=TOTAL){finished=true; $('resultTitle').textContent=position===1?'VICTORY!':`P${position} FINISH`; $('resultText').textContent=`You finished ${position===1?'first':`P${position}`} after ${TOTAL} laps. Best lap: ${best.toFixed(2)} seconds. ${pitUsed?'One pit stop completed.':'You skipped the pit stop.'}`;$('result').classList.remove('hidden');say('That is the chequered flag. Great work, team.');}
- render();
-}
-$('push').addEventListener('click',()=>choose('attack'));
-$('conserve').addEventListener('click',()=>choose('conserve'));
-$('pit').addEventListener('click',()=>choose('pit'));
-$('next').addEventListener('click',step);
-$('restart').addEventListener('click',()=>{lap=0;energy=68;tyres=82;position=4;playerProgress=0;best=null;started=false;finished=false;lastCall='balanced';pitUsed=false;rivals.forEach((r,i)=>r.progress=[.16,.10,.06,.04,.01,0][i]);$('result').classList.add('hidden');$('next').innerHTML='START RACE <span>→</span>';say('“All systems nominal. You are P4. Let’s make this count.”');render()});
+"use strict";
+const SAVE="apex-grid-career-v2", $=id=>document.getElementById(id);
+const parts=[{id:"engine",name:"Power unit",desc:"Acceleration and straight-line speed.",base:450},{id:"aero",name:"Aerodynamics",desc:"Cornering grip and high-speed stability.",base:400},{id:"handling",name:"Suspension",desc:"Sharper response through technical sections.",base:350},{id:"brakes",name:"Brake package",desc:"Brake later and protect lap time.",base:300}];
+const fresh=()=>({credits:2500,levels:{engine:0,aero:0,handling:0,brakes:0},points:0,races:0,best:null});
+function load(){try{const s=JSON.parse(localStorage.getItem(SAVE));return s?{...fresh(),...s,levels:{...fresh().levels,...s.levels}}:fresh()}catch(e){return fresh()}}
+let state=load(),race=null,timer;
+function save(){localStorage.setItem(SAVE,JSON.stringify(state))}
+function toast(s){const e=$("toast");e.textContent=s;e.classList.add("show");clearTimeout(timer);timer=setTimeout(()=>e.classList.remove("show"),2100)}
+function rating(){return Math.round(52+Object.values(state.levels).reduce((a,b)=>a+b,0)*2.5)}
+function tier(){return rating()>=82?"ELITE":rating()>=68?"PRO":rating()>=58?"CONTENDER":"ROOKIE"}
+function ordinal(n){return n+(n===1?"ST":n===2?"ND":n===3?"RD":"TH")}
+function renderStats(){const labels=[["POWER","engine"],["AERO","aero"],["HANDLING","handling"],["BRAKES","brakes"]];$("stat-bars").innerHTML=labels.map(x=>{const v=Math.min(100,42+state.levels[x[1]]*8);return '<div class="stat-row"><span>'+x[0]+'</span><div class="progress-track"><span style="width:'+v+'%"></span></div><b>'+v+'</b></div>'}).join("")}
+function renderUpgrades(){$("upgrade-list").innerHTML=parts.map(p=>{const n=state.levels[p.id],cost=Math.round(p.base+n*p.base*.55);return '<article class="upgrade-card"><div><h3>'+p.name+'</h3><p>'+p.desc+'</p><span class="upgrade-level">LEVEL '+n+' · '+(n===5?"MAX LEVEL":"NEXT: + PERFORMANCE")+'</span></div><div><div class="upgrade-cost">◈ '+cost.toLocaleString()+' CR</div><button class="upgrade-btn" data-upgrade="'+p.id+'" '+(n===5||state.credits<cost?"disabled":"")+'>'+(n===5?"MAXED":"UPGRADE ↗")+'</button></div></article>'}).join("");document.querySelectorAll("[data-upgrade]").forEach(b=>b.addEventListener("click",()=>buy(b.dataset.upgrade)))}
+function render(){ $("credits").textContent=state.credits.toLocaleString();$("overall-rating").textContent=rating();$("garage-rating").textContent=rating();$("garage-tier").textContent=tier()+" CLASS";$("rating-tier").textContent=tier();$("rating-fill").style.width=Math.min(100,rating())+"%";$("points").textContent=state.points+" PTS";$("points-fill").style.width=Math.min(100,state.points/25*100)+"%";$("races-completed").textContent=Math.min(5,state.races)+" / 5";$("best-finish").textContent=state.best?ordinal(state.best):"—";$("upgrade-count").textContent=Object.values(state.levels).reduce((a,b)=>a+b,0);renderStats();renderUpgrades()}
+function buy(id){const p=parts.find(x=>x.id===id);if(!p)return;const n=state.levels[id],cost=Math.round(p.base+n*p.base*.55);if(n>=5)return toast("Component is fully upgraded.");if(state.credits<cost)return toast("Not enough credits. Finish a race to earn more.");state.credits-=cost;state.levels[id]++;save();render();toast(p.name+" upgraded to level "+state.levels[id]+".")}
+function view(name){document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id==="view-"+name));document.querySelectorAll(".nav-btn").forEach(b=>b.classList.toggle("active",b.dataset.view===name));window.scrollTo({top:0,behavior:"smooth"})}
+document.querySelectorAll(".nav-btn").forEach(b=>b.addEventListener("click",()=>view(b.dataset.view)));document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>view(b.dataset.go)));$("hero-race").addEventListener("click",()=>view("race"));
+function start(){race={lap:0,tyre:100,energy:100,attack:false,pitted:false,strategy:document.querySelector('input[name="strategy"]:checked').value,player:0,rivals:[4,8,12],elapsed:0,done:false};$("start-race").classList.add("hidden");$("results-panel").classList.add("hidden");$("live-race").classList.remove("hidden");$("attack-btn").disabled=false;$("pit-btn").disabled=false;$("next-lap").classList.remove("hidden");$("next-lap").textContent="RUN LAP 1 →";$("race-hint").textContent="Race engineer: all systems ready. Run the first lap.";renderRace();$("live-race").scrollIntoView({behavior:"smooth",block:"start"})}
+function renderRace(){if(!race)return;$("lap-label").textContent="LAP "+Math.max(1,race.lap)+" / 12";$("lap-fill").style.width=(race.lap/12*100)+"%";$("race-clock").textContent="00:"+String(race.elapsed).padStart(2,"0");$("tyre-condition").textContent=Math.round(race.tyre)+"%";$("energy-level").textContent=Math.round(race.energy)+"%";$("player-marker").style.left=(8+race.player/16*80)+"%";["r1","r2","r3"].forEach((c,i)=>document.querySelector("."+c).style.left=(10+race.rivals[i]/16*80)+"%");const list=[{name:"APEX MOTORSPORT",num:"07",pos:race.player,player:true},{name:"NORTHSTAR GP",num:"12",pos:race.rivals[0]},{name:"VOLT RACING",num:"21",pos:race.rivals[1]},{name:"TITAN WORKS",num:"44",pos:race.rivals[2]}].sort((a,b)=>b.pos-a.pos);$("leaderboard").innerHTML=list.map((x,i)=>'<div class="leader-row '+(x.player?"player":"")+'"><b>'+ordinal(i+1)+'</b><span>'+x.name+'</span><small>#'+x.num+'</small><b>'+(x.player?"YOU":Math.max(0,Math.round((x.pos-race.player)*1.8))+"s")+'</b></div>').join("")}
+function nextLap(){if(!race||race.done)return;race.lap++;race.elapsed+=88+Math.round(Math.random()*5);const bonus=Object.values(state.levels).reduce((a,b)=>a+b,0)*.18;const strat=race.strategy==="aggressive"?1.8:race.strategy==="conserve"?-.8:0;const wear=race.strategy==="aggressive"?11:race.strategy==="conserve"?4.5:7;const penalty=race.tyre<35?2.8:race.tyre<60?1.1:0;race.player+=8.4+bonus+strat-penalty+(race.attack?2.6:0)+Math.random()*1.4;race.rivals=race.rivals.map((p,i)=>p+7.9+i*.23+Math.random()*1.8);race.tyre=Math.max(0,race.tyre-wear-(race.attack?2:0));race.energy=Math.min(100,race.energy+(race.strategy==="conserve"?13:7)-(race.attack?24:0));race.attack=false;$("attack-btn").textContent="⚡ ATTACK MODE";if(race.lap>=12){finish();return}$("next-lap").textContent="RUN LAP "+(race.lap+1)+" →";renderRace();$("race-hint").textContent=race.tyre<35?"Tyres are fading. Consider a pit stop.":race.energy>70?"Energy is available. Time your attack.":"Watch tyre condition and energy."}
+function attack(){if(!race||race.done)return;if(race.energy<24)return toast("Not enough energy for attack mode.");race.energy-=24;race.attack=true;$("attack-btn").disabled=true;$("race-hint").textContent="Attack mode engaged — extra pace this lap, at a cost in energy and tyre life.";renderRace()}
+function pit(){if(!race||race.done)return;if(race.pitted)return toast("Your one scheduled pit stop is already used.");race.pitted=true;race.tyre=100;race.elapsed+=23;race.player-=1.2;$("pit-btn").disabled=true;$("race-hint").textContent="Pit stop complete. Fresh tyres fitted — a little track time lost.";renderRace();toast("Pit stop complete. Fresh tyres fitted.")}
+function finish(){race.done=true;$("next-lap").classList.add("hidden");$("attack-btn").disabled=true;$("pit-btn").disabled=true;const finishers=[{pos:race.player,player:true},...race.rivals.map(pos=>({pos}))].sort((a,b)=>b.pos-a.pos);const place=finishers.findIndex(x=>x.player)+1,points=[25,18,15,12][place-1]||0,reward=[900,650,500,350][place-1]||250,bonus=rating()>=65?100:0;state.credits+=reward+bonus;state.points+=points;state.races++;state.best=state.best?Math.min(state.best,place):place;save();render();$("live-race").classList.add("hidden");$("results-panel").classList.remove("hidden");$("result-title").textContent=ordinal(place)+" PLACE";$("result-summary").textContent=place===1?"A brilliant drive. The first win is in the books.":place===2?"A podium finish. Keep pushing for the win.":place===3?"A hard-fought podium. There is more pace to find.":"A tough race. Head back to the garage and find performance.";$("result-stats").innerHTML='<div><b>'+points+'</b><small>CHAMPIONSHIP PTS</small></div><div><b>◈ '+(reward+bonus).toLocaleString()+'</b><small>CREDITS EARNED</small></div><div><b>'+race.elapsed+'s</b><small>RACE TIME</small></div>';$("results-panel").scrollIntoView({behavior:"smooth",block:"center"})}
+$("start-race").addEventListener("click",start);$("next-lap").addEventListener("click",nextLap);$("attack-btn").addEventListener("click",attack);$("pit-btn").addEventListener("click",pit);$("continue-season").addEventListener("click",()=>{$("live-race").classList.add("hidden");$("results-panel").classList.add("hidden");$("start-race").classList.remove("hidden");view("overview");toast("Season progress saved.")});$("reset-game").addEventListener("click",()=>{if(confirm("Reset all Apex Grid progress?")){localStorage.removeItem(SAVE);state=fresh();race=null;$("live-race").classList.add("hidden");$("results-panel").classList.add("hidden");$("start-race").classList.remove("hidden");render();view("overview");toast("Career save reset.")}});
 render();
 })();
