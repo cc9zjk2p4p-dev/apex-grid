@@ -4,6 +4,16 @@
 
 An original, single-player-first motorsport management game prototype designed for mobile and desktop browsers.
 
+## Version 0.4.0 — Drivers & Team Operations
+
+- Lead driver attributes (pace, control, focus, racecraft), experience, levels, and paid training.
+- Driver development feeds into race performance and grows through championship participation.
+- Recruitable performance engineer, race strategist, and commercial manager with gameplay bonuses.
+- Three upgradeable team facilities: driver simulator, advanced workshop, and performance centre.
+- Sponsorship contracts with race-completion objectives, credit rewards, and reputation gains.
+- Team reputation progression shaped by race results and investment.
+- Version 0.3 championship, qualifying, circuits, garage and race systems retained.
+
 ## Version 0.3.0 — Race Weekend & Championship
 
 - Five-round championship across five original circuits with distinct lap counts and track characteristics.
@@ -30,7 +40,7 @@ Open `index.html` in a modern browser. No build tools or dependencies are requir
 - Qualifying and race outcomes are simulated locally; there is no server-side simulation.
 - Saves are tied to the current browser/device and are not synced across devices.
 - Weather is represented by event forecasts and tyre-wear modifiers rather than live weather simulation.
-- Driver development, staff hiring, sponsorships, and online multiplayer are not implemented yet.
+- Online multiplayer and cloud saves are not implemented yet.
 
 ## Roadmap
 
