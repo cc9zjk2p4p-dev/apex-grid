@@ -1,70 +1,22 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#10151d">
-<title>Apex Grid — Race Strategy</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<main class="shell">
-  <header class="topbar">
-    <div class="brand"><span class="mark">AG</span><div><div class="eyebrow">MOTORSPORT MANAGEMENT</div><h1>APEX GRID</h1></div></div>
-    <div class="round">ROUND 01 <b>·</b> COASTAL GRAND PRIX</div>
-  </header>
-
-  <section class="hero">
-    <div>
-      <p class="eyebrow lime">RACE CONTROL / LIVE SESSION</p>
-      <h2>Own the <em>race.</em></h2>
-      <p class="intro">Call the strategy. Manage your energy. Bring it home.</p>
-    </div>
-    <div class="hero-stat"><span>LAP</span><strong id="lap">01<span>/12</span></strong><small id="status">FORMATION COMPLETE</small></div>
-  </section>
-
-  <section class="dashboard">
-    <div class="track-panel panel">
-      <div class="panel-head"><div><span class="eyebrow">CIRCUIT VIEW</span><h3>Harbour Ring</h3></div><span class="live"><i></i> LIVE</span></div>
-      <canvas id="track" width="760" height="430" aria-label="Top-down race track with your car and rival cars"></canvas>
-      <div class="track-legend"><span><i class="dot player"></i> YOU · APEX GP</span><span><i class="dot rival"></i> RIVALS</span><span><i class="dot pit"></i> PIT LANE</span></div>
-    </div>
-
-    <aside class="side">
-      <div class="panel position-panel">
-        <span class="eyebrow">CURRENT POSITION</span>
-        <div class="position"><strong id="position">P4</strong><span id="gap">+2.4s to P3</span></div>
-        <div class="progress"><span id="progress"></span></div>
-        <div class="mini-stats"><div><small>BEST LAP</small><b id="best">—</b></div><div><small>TYRE LIFE</small><b id="tyres">82%</b></div></div>
-      </div>
-      <div class="panel">
-        <div class="panel-head"><div><span class="eyebrow">POWER UNIT</span><h3>Energy reserve</h3></div><b id="energyNum" class="energy-num">68%</b></div>
-        <div class="energy"><span id="energyBar"></span></div>
-        <p class="hint">Deploy energy for a short burst of pace. It recharges slowly each lap.</p>
-      </div>
-      <div class="panel strategy">
-        <span class="eyebrow">TEAM RADIO</span>
-        <h3>Choose your call</h3>
-        <button id="push" class="action primary"><span>01</span><div><b>ATTACK MODE</b><small>Spend energy · gain pace</small></div><strong>↗</strong></button>
-        <button id="conserve" class="action"><span>02</span><div><b>MANAGE TYRES</b><small>Save rubber · steady pace</small></div><strong>↗</strong></button>
-        <button id="pit" class="action"><span>03</span><div><b>PIT THIS LAP</b><small>Fresh tyres · time lost</small></div><strong>↗</strong></button>
-      </div>
-    </aside>
-  </section>
-
-  <section class="bottom">
-    <div class="panel race-control">
-      <div><span class="eyebrow">RACE ENGINEER</span><p id="radio">“All systems nominal. You're P4. Let's make this count.”</p></div>
-      <button id="next" class="next">START RACE <span>→</span></button>
-    </div>
-    <div class="panel leaderboard">
-      <div class="panel-head"><div><span class="eyebrow">TIMING TOWER</span><h3>Race order</h3></div><span class="eyebrow">12 LAPS</span></div>
-      <div id="leaderboard"></div>
-    </div>
-  </section>
-  <footer><span>APEX GRID <b>·</b> PROTOTYPE 0.1</span><span>UNOFFICIAL FAN-MADE CONCEPT · NOT AFFILIATED WITH FORMULA 1</span></footer>
-</main>
-<div id="result" class="modal hidden"><div class="modal-card"><span class="eyebrow lime">CHEQUERED FLAG</span><h2 id="resultTitle">Race complete</h2><p id="resultText"></p><button id="restart" class="next">RACE AGAIN <span>↻</span></button></div></div>
-<script src="game.js"></script>
-</body>
-</html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b1119"><meta name="description" content="Apex Grid — own the race, master the strategy.">
+<title>Apex Grid — Motorsport Manager</title><link rel="stylesheet" href="style.css"></head>
+<body><div class="app-shell">
+<header class="topbar"><a class="brand" href="#"><span class="brand-mark">AG</span><span>APEX <b>GRID</b><small>TEAM PRINCIPAL</small></span></a><div class="top-stats"><span class="season-tag">SEASON 01</span><span class="wallet">◈ <b id="credits">2,500</b><small>CR</small></span></div></header>
+<main>
+<section class="hero-panel"><div class="hero-copy"><p class="eyebrow">YOUR TEAM. YOUR LEGACY.</p><h1>BUILD THE TEAM.<br><em>OWN THE GRID.</em></h1><p class="hero-sub">Every upgrade counts. Every decision matters.</p><button class="primary-btn" id="hero-race">GO TO RACE WEEKEND <span>↗</span></button></div><div class="hero-car"><div class="speed-lines"></div><div class="car-body"><div class="cockpit"></div><div class="front-wing"></div><div class="rear-wing"></div><div class="wheel wheel-a"></div><div class="wheel wheel-b"></div><div class="wheel wheel-c"></div><div class="wheel wheel-d"></div><div class="car-stripe"></div></div><span class="car-number">07</span></div><div class="hero-foot"><span><i class="live-dot"></i> FACTORY ONLINE</span><span>APEX MOTORSPORT · EST. 2026</span></div></section>
+<nav class="main-nav"><button class="nav-btn active" data-view="overview">OVERVIEW</button><button class="nav-btn" data-view="garage">GARAGE <span class="nav-count" id="upgrade-count">0</span></button><button class="nav-btn" data-view="race">RACE WEEKEND</button><button class="nav-btn" data-view="team">TEAM</button></nav>
+<section class="view active" id="view-overview"><div class="section-heading"><div><p class="eyebrow">COMMAND CENTRE</p><h2>Team overview</h2></div><span class="status-pill">● READY FOR ACTION</span></div>
+<div class="overview-grid">
+<article class="panel"><div class="panel-head"><div><span class="eyebrow">CHASSIS AG-01</span><h3>Your machine</h3></div><span class="tiny-label">DEVELOPMENT 01</span></div><div class="mini-car"><div class="mini-car-shape"><span>07</span></div></div><div class="car-rating"><div><strong id="overall-rating">52</strong><small>CAR RATING</small></div><div class="rating-track"><span id="rating-fill"></span></div><b id="rating-tier">ROOKIE</b></div><button class="text-btn" data-go="garage">OPEN GARAGE →</button></article>
+<article class="panel"><span class="eyebrow">NEXT EVENT · ROUND 01</span><h3>Coastal Grand Prix</h3><p class="muted">Harbour Circuit · 12 laps</p><div class="track-art"><svg viewBox="0 0 300 120"><path d="M37 65 C18 36 49 15 92 24 L133 34 C158 40 164 17 202 20 C246 22 272 48 255 75 C239 101 205 96 175 88 L122 76 C92 69 72 96 52 87 C43 83 40 75 37 65Z" fill="none" stroke="#f04a46" stroke-width="7" stroke-linecap="round"/></svg></div><div class="race-meta"><span>12 LAPS</span><span>TYRE STRATEGY</span><span>3 RIVALS</span></div><button class="primary-btn full" data-go="race">ENTER RACE WEEKEND ↗</button></article>
+<article class="panel progress-panel"><span class="eyebrow">SEASON PROGRESS</span><h3>Climb the standings</h3><div class="progress-row"><span>Championship points</span><b id="points">0 PTS</b></div><div class="progress-track"><span id="points-fill"></span></div><div class="progress-row"><span>Races completed</span><b id="races-completed">0 / 5</b></div><div class="progress-row"><span>Best finish</span><b id="best-finish">—</b></div><div class="next-goal"><span class="goal-icon">✦</span><div><b>TEAM PRINCIPAL GOAL</b><small>Score your first championship points.</small></div></div></article></div>
+<div class="section-heading lower-heading"><div><p class="eyebrow">DEVELOPMENT PRIORITIES</p><h2>Make your next move</h2></div></div><div class="priority-grid"><button class="priority-card" data-go="garage"><span class="priority-icon">⌁</span><span><b>Develop your car</b><small>Invest credits in performance upgrades.</small></span><strong>→</strong></button><button class="priority-card" data-go="team"><span class="priority-icon">♙</span><span><b>Meet your driver</b><small>Review your driver and team operations.</small></span><strong>→</strong></button><button class="priority-card" data-go="race"><span class="priority-icon">旗</span><span><b>Race for rewards</b><small>Earn credits and championship points.</small></span><strong>→</strong></button></div></section>
+<section class="view" id="view-garage"><div class="section-heading"><div><p class="eyebrow">ENGINEERING DEPARTMENT</p><h2>Car development</h2><p class="muted">Spend credits to turn potential into pace.</p></div><span class="status-pill">AG-01 · ACTIVE</span></div><div class="garage-layout"><article class="panel garage-car-panel"><div class="garage-car-art"><div class="garage-car-shape"><div class="garage-wheel w1"></div><div class="garage-wheel w2"></div><div class="garage-wheel w3"></div><div class="garage-wheel w4"></div><span>07</span></div></div><div class="garage-rating"><span class="eyebrow">OVERALL PERFORMANCE</span><strong id="garage-rating">52</strong><span id="garage-tier">ROOKIE CLASS</span></div><div class="stat-bars" id="stat-bars"></div></article><div class="upgrade-list" id="upgrade-list"></div></div></section>
+<section class="view" id="view-race"><div class="section-heading"><div><p class="eyebrow">ROUND 01 · HARBOUR CIRCUIT</p><h2>Race weekend</h2><p class="muted">12 laps · 3 rivals · one shot at the podium.</p></div><span class="status-pill">EVENT OPEN</span></div><div class="race-layout"><article class="panel"><div class="panel-head"><div><span class="eyebrow">CIRCUIT MAP</span><h3>Coastal Grand Prix</h3></div><span class="tiny-label">2.8 KM</span></div><div class="large-track"><svg viewBox="0 0 560 250"><path d="M80 125 C45 80 85 35 150 48 L235 65 C280 75 290 35 360 38 C450 40 510 85 480 145 C455 205 390 195 325 175 L220 145 C160 130 130 190 100 165 C88 155 83 140 80 125Z" fill="none" stroke="#293847" stroke-width="28" stroke-linecap="round"/><path d="M80 125 C45 80 85 35 150 48 L235 65 C280 75 290 35 360 38 C450 40 510 85 480 145 C455 205 390 195 325 175 L220 145 C160 130 130 190 100 165 C88 155 83 140 80 125Z" fill="none" stroke="#f04a46" stroke-width="4" stroke-dasharray="10 9"/></svg></div><div class="track-details"><span>◷ 12 LAPS</span><span>↗ 8 TURNS</span><span>◈ 2.8 KM</span></div></article><article class="panel strategy-panel"><span class="eyebrow">RACE STRATEGY</span><h3>Choose your approach</h3><label class="strategy-option"><input type="radio" name="strategy" value="balanced" checked><span><b>Balanced</b><small>Steady pace with moderate tyre wear.</small></span><i>RECOMMENDED</i></label><label class="strategy-option"><input type="radio" name="strategy" value="aggressive"><span><b>Aggressive</b><small>More pace, faster tyre degradation.</small></span></label><label class="strategy-option"><input type="radio" name="strategy" value="conserve"><span><b>Conserve</b><small>Protect tyres and build energy.</small></span></label><button class="primary-btn full" id="start-race">START RACE ↗</button></article></div>
+<article class="panel live-race hidden" id="live-race"><div class="live-head"><div><span class="eyebrow">LIVE TIMING</span><h3 id="race-title">Race in progress</h3></div><span class="status-pill"><i class="live-dot"></i> LIVE</span></div><div class="race-progress"><span id="lap-label">LAP 1 / 12</span><div class="progress-track"><span id="lap-fill"></span></div><span id="race-clock">00:00</span></div><div class="track-live"><div class="track-live-line"></div><div class="race-car-marker player-marker" id="player-marker">07</div><div class="race-car-marker rival-marker r1">12</div><div class="race-car-marker rival-marker r2">21</div><div class="race-car-marker rival-marker r3">44</div></div><div class="race-actions"><div class="race-metric"><small>TYRE CONDITION</small><b id="tyre-condition">100%</b></div><div class="race-metric"><small>ENERGY</small><b id="energy-level">100%</b></div><button class="action-btn" id="attack-btn">⚡ ATTACK MODE</button><button class="action-btn secondary" id="pit-btn">PIT STOP</button></div><div class="leaderboard" id="leaderboard"></div><p class="race-hint" id="race-hint">Manage your pace, watch tyre wear and use your pit stop wisely.</p><button class="primary-btn full hidden" id="next-lap">RUN NEXT LAP →</button></article>
+<article class="panel results-panel hidden" id="results-panel"><span class="eyebrow">CHEQUERED FLAG</span><h2 id="result-title">Race complete</h2><p id="result-summary" class="muted"></p><div class="result-stats" id="result-stats"></div><button class="primary-btn full" id="continue-season">CONTINUE SEASON →</button></article></section>
+<section class="view" id="view-team"><div class="section-heading"><div><p class="eyebrow">APEX MOTORSPORT</p><h2>Your team</h2><p class="muted">A championship is built by more than a fast car.</p></div></div><div class="team-grid"><article class="panel driver-card"><span class="eyebrow">LEAD DRIVER · #07</span><div class="driver-avatar">07</div><h3>Alex Mercer</h3><p class="muted">Rookie · Calm under pressure</p><div class="driver-stats"><span>PACE <b>58</b></span><span>CONTROL <b>62</b></span><span>FOCUS <b>55</b></span></div></article><article class="panel"><span class="eyebrow">TEAM OPERATIONS</span><h3>Small team. Big ambition.</h3><div class="team-row"><span class="team-icon">⚙</span><div><b>Engineering</b><small>Car development and setup</small></div><span class="team-status">ACTIVE</span></div><div class="team-row"><span class="team-icon">◉</span><div><b>Race strategy</b><small>Tyres, energy and pit calls</small></div><span class="team-status">ACTIVE</span></div><div class="team-row"><span class="team-icon">▤</span><div><b>Commercial</b><small>Sponsorship opportunities</small></div><span class="team-status locked">COMING SOON</span></div><div class="team-row"><span class="team-icon">♧</span><div><b>Driver academy</b><small>Future talent development</small></div><span class="team-status locked">COMING SOON</span></div></article></div></section>
+</main><footer><span>APEX GRID <b>0.2.0</b></span><span>AN ORIGINAL MOTORSPORT MANAGEMENT GAME</span><button id="reset-game" class="reset-btn">RESET SAVE</button></footer></div><div class="toast" id="toast" role="status" aria-live="polite"></div><script src="game.js"></script></body></html>
