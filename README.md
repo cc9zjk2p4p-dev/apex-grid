@@ -4,6 +4,16 @@
 
 An original, single-player-first motorsport management game prototype designed for mobile and desktop browsers.
 
+## Version 0.7.0 — Career & Race Presentation
+
+- Driver market with three recruitable prospects, distinct attributes, signing costs, and lead-driver replacement.
+- Career archive tracks wins, podiums, poles, fastest laps, and career championship points.
+- Season awards recognise constructors champions, race winners, podium consistency, and completed campaigns.
+- More varied race-control incidents: safety car, virtual safety car, and local yellow-flag decisions with meaningful trade-offs.
+- Race presentation polish: animated live timing markers and responsive career and driver panels.
+- Corrected eight-round season gating and sponsor targets throughout event and team interfaces.
+- Version 0.6 rival teams, strategic pit windows, eight-circuit calendar, and season progression retained.
+
 ## Version 0.6.0 — Rival Teams & Championship Depth
 
 - Three rival teams now have named drivers, distinct racing identities, strengths, tyre wear profiles, and strategic pit windows.
@@ -47,7 +57,7 @@ An original, single-player-first motorsport management game prototype designed f
 
 ## Run it
 
-Open `index.html` in a modern browser. No build tools or dependencies are required. Progress is saved in the current browser/device using local storage. Existing Version 0.5 career saves are migrated when available.
+Open `index.html` in a modern browser. No build tools or dependencies are required. Progress is saved in the current browser/device using local storage. Existing Version 0.6 career saves are migrated when available.
 
 ## Files
 
@@ -64,11 +74,11 @@ Open `index.html` in a modern browser. No build tools or dependencies are requir
 
 ## Roadmap
 
-### 0.7 — Career & Race Presentation
-- Deeper driver market and rival-driver progression.
-- More varied race-control incidents and strategy outcomes.
-- Expanded season objectives, awards, and career records.
-- Additional visual polish and mobile usability improvements.
+### 0.8 — Team Identity & Long-Term Career
+- Team identity choices and deeper sponsor negotiations.
+- Rival-driver progression and transfer-market refreshes.
+- More detailed season objectives and multi-season achievements.
+- Additional race presentation, sound, and accessibility options.
 
 ### Later
 - Cloud saves and account-based progression.
