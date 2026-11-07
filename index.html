@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10151d">
+<title>Apex Grid — Race Strategy</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="shell">
+  <header class="topbar">
+    <div class="brand"><span class="mark">AG</span><div><div class="eyebrow">MOTORSPORT MANAGEMENT</div><h1>APEX GRID</h1></div></div>
+    <div class="round">ROUND 01 <b>·</b> COASTAL GRAND PRIX</div>
+  </header>
+
+  <section class="hero">
+    <div>
+      <p class="eyebrow lime">RACE CONTROL / LIVE SESSION</p>
+      <h2>Own the <em>race.</em></h2>
+      <p class="intro">Call the strategy. Manage your energy. Bring it home.</p>
+    </div>
+    <div class="hero-stat"><span>LAP</span><strong id="lap">01<span>/12</span></strong><small id="status">FORMATION COMPLETE</small></div>
+  </section>
+
+  <section class="dashboard">
+    <div class="track-panel panel">
+      <div class="panel-head"><div><span class="eyebrow">CIRCUIT VIEW</span><h3>Harbour Ring</h3></div><span class="live"><i></i> LIVE</span></div>
+      <canvas id="track" width="760" height="430" aria-label="Top-down race track with your car and rival cars"></canvas>
+      <div class="track-legend"><span><i class="dot player"></i> YOU · APEX GP</span><span><i class="dot rival"></i> RIVALS</span><span><i class="dot pit"></i> PIT LANE</span></div>
+    </div>
+
+    <aside class="side">
+      <div class="panel position-panel">
+        <span class="eyebrow">CURRENT POSITION</span>
+        <div class="position"><strong id="position">P4</strong><span id="gap">+2.4s to P3</span></div>
+        <div class="progress"><span id="progress"></span></div>
+        <div class="mini-stats"><div><small>BEST LAP</small><b id="best">—</b></div><div><small>TYRE LIFE</small><b id="tyres">82%</b></div></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><div><span class="eyebrow">POWER UNIT</span><h3>Energy reserve</h3></div><b id="energyNum" class="energy-num">68%</b></div>
+        <div class="energy"><span id="energyBar"></span></div>
+        <p class="hint">Deploy energy for a short burst of pace. It recharges slowly each lap.</p>
+      </div>
+      <div class="panel strategy">
+        <span class="eyebrow">TEAM RADIO</span>
+        <h3>Choose your call</h3>
+        <button id="push" class="action primary"><span>01</span><div><b>ATTACK MODE</b><small>Spend energy · gain pace</small></div><strong>↗</strong></button>
+        <button id="conserve" class="action"><span>02</span><div><b>MANAGE TYRES</b><small>Save rubber · steady pace</small></div><strong>↗</strong></button>
+        <button id="pit" class="action"><span>03</span><div><b>PIT THIS LAP</b><small>Fresh tyres · time lost</small></div><strong>↗</strong></button>
+      </div>
+    </aside>
+  </section>
+
+  <section class="bottom">
+    <div class="panel race-control">
+      <div><span class="eyebrow">RACE ENGINEER</span><p id="radio">“All systems nominal. You're P4. Let's make this count.”</p></div>
+      <button id="next" class="next">START RACE <span>→</span></button>
+    </div>
+    <div class="panel leaderboard">
+      <div class="panel-head"><div><span class="eyebrow">TIMING TOWER</span><h3>Race order</h3></div><span class="eyebrow">12 LAPS</span></div>
+      <div id="leaderboard"></div>
+    </div>
+  </section>
+  <footer><span>APEX GRID <b>·</b> PROTOTYPE 0.1</span><span>UNOFFICIAL FAN-MADE CONCEPT · NOT AFFILIATED WITH FORMULA 1</span></footer>
+</main>
+<div id="result" class="modal hidden"><div class="modal-card"><span class="eyebrow lime">CHEQUERED FLAG</span><h2 id="resultTitle">Race complete</h2><p id="resultText"></p><button id="restart" class="next">RACE AGAIN <span>↻</span></button></div></div>
+<script src="game.js"></script>
+</body>
+</html>
