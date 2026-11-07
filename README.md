@@ -4,7 +4,16 @@
 
 An original, single-player-first motorsport management game prototype designed for mobile and desktop browsers.
 
-## Version 0.5.0 — Deeper Race Simulation\n\n- Pre-race car setup choices for front wing, suspension and gearing, with circuit-sensitive performance trade-offs.\n- Soft, medium and hard tyre compounds with distinct pace and degradation characteristics.\n- Race-control safety car incidents with strategic pit-under-safety-car or stay-out decisions.\n- Live lap telemetry showing lap time, estimated gap and tyre condition.\n- Persistent recent race history, including round, event, finish and points.\n- Version 0.4 driver progression, staff, facilities, sponsors and championship systems retained.\n\n## Version 0.4.0 — Drivers & Team Operations
+## Version 0.5.0 — Deeper Race Simulation
+
+- Pre-race car setup choices for front wing, suspension and gearing, with circuit-sensitive performance trade-offs.
+- Soft, medium and hard tyre compounds with distinct pace and degradation characteristics.
+- Race-control safety car incidents with strategic pit-under-safety-car or stay-out decisions.
+- Live lap telemetry showing lap time, estimated gap and tyre condition.
+- Persistent recent race history, including round, event, finish and points.
+- Version 0.4 driver progression, staff, facilities, sponsors and championship systems retained.
+
+## Version 0.4.0 — Drivers & Team Operations
 
 - Lead driver attributes (pace, control, focus, racecraft), experience, levels, and paid training.
 - Driver development feeds into race performance and grows through championship participation.
