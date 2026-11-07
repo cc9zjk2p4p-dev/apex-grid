@@ -2,50 +2,49 @@
 
 **Own the race. Master the strategy. Become the champion.**
 
-An original, single-player-first motorsport management prototype designed for mobile and desktop browsers.
+An original, single-player-first motorsport management game prototype designed for mobile and desktop browsers.
 
-## Version 0.2.0 — Garage & Career
+## Version 0.3.0 — Race Weekend & Championship
 
-- **Car garage:** inspect overall rating and component performance.
-- **Four upgrade paths:** power unit, aerodynamics, suspension/handling, and brakes.
-- **Five levels per component:** spend credits to improve the car.
-- **Career progression:** championship points, completed races, and best finish.
-- **Race rewards:** earn credits based on finishing position, with a development bonus for stronger cars.
-- **Persistent save:** upgrades, credits, and career progress are stored in browser local storage.
-- **Mobile-first interface:** responsive navigation, garage cards, and touch-friendly race controls.
-- **Race strategy:** balanced, aggressive, and conserve presets, plus attack mode and one pit stop.
+- Five-round championship across five original circuits with distinct lap counts and track characteristics.
+- Qualifying before each race, with a starting grid position based on car performance and a flying-lap roll.
+- Dynamic circuit details: event name, distance, corner count, lap count, and forecast.
+- Weather and track effects: hot conditions increase tyre wear; wet conditions alter the degradation profile.
+- Circuit specialisms: engine, handling, or aerodynamic upgrades provide small advantages on suitable tracks.
+- Constructors standings for Apex Motorsport and three rival teams.
+- Season finale after round five, with championship points and final standings.
+- Retains the Version 0.2 garage, component upgrades, credits, rewards, and local career save.
 
 ## Run it
 
-Open `index.html` in a modern browser. No build tools or dependencies are required. Progress is saved in the current browser/device.
+Open `index.html` in a modern browser. No build tools or dependencies are required. Progress is saved in the current browser/device using local storage.
 
-## Project files
+## Files
 
 - `index.html` — game screens and interface.
 - `style.css` — responsive visual design.
-- `game.js` — garage, upgrades, career progression, and race simulation.
+- `game.js` — championship, qualifying, race simulation, garage, and save system.
 
 ## Prototype limitations
 
-- Race outcomes are simulated locally; there is no server-side simulation.
+- Qualifying and race outcomes are simulated locally; there is no server-side simulation.
 - Saves are tied to the current browser/device and are not synced across devices.
-- The current release has one introductory event rather than a complete championship calendar.
-- Driver development, sponsorships, staff hiring, and online multiplayer are not implemented yet.
+- Weather is represented by event forecasts and tyre-wear modifiers rather than live weather simulation.
+- Driver development, staff hiring, sponsorships, and online multiplayer are not implemented yet.
 
 ## Roadmap
 
-### 0.3 — Race Weekend & Championship
-- Multiple circuits with distinct layouts and track characteristics.
-- A season calendar and championship standings.
-- Qualifying sessions and grid position.
-- Weather and track-condition variation.
-- Improved race telemetry and rival behaviour.
-
 ### 0.4 — Drivers & Team Operations
-- Driver attributes and development progression.
+- Driver attributes, experience, and development progression.
 - Staff roles and facility upgrades.
-- Sponsorship objectives and contract rewards.
+- Sponsorship objectives, contracts, and rewards.
 - Team reputation and season objectives.
+
+### 0.5 — Deeper Race Simulation
+- More detailed car setup and tyre compounds.
+- Safety car and incident events.
+- Improved rival strategy and race telemetry.
+- Expanded calendar and race-result history.
 
 ### Later
 - Cloud saves and account-based progression.
