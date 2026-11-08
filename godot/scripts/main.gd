@@ -11,7 +11,7 @@ var selected_tab := "garage"
 var content: VBoxContainer
 var credits_label: Label
 var status_label: Label
-var race_view: Control
+var race_view
 var race_status: Label
 var race_lap := 1
 
