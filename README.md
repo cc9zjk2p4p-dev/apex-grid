@@ -6,8 +6,9 @@ An original, single-player-first motorsport management game prototype designed f
 
 ## Version 0.8.0 — Team Identity & Long-Term Career
 
-- Custom team name and primary colour, reflected in the game interface.
+- Custom team name and primary colour, reflected in team and race presentation.
 - Team identity is saved with the career and carried across seasons.
+- Sponsor negotiations let you choose between three contracts with different race targets and payouts; changing terms forfeits current contract progress.
 - New race-experience settings: optional sound feedback, reduced motion, and high-contrast interface mode.
 - Career achievement tracking for first victory, first podium, five wins, career points milestones, and completed seasons.
 - Rival teams improve their pace gradually after each completed season.
