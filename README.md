@@ -112,10 +112,10 @@ Open `index.html` in a modern browser. No build tools or dependencies are requir
 
 ## Roadmap
 
-### 1.4 — Race Weekend Immersion & Strategy Intelligence
-- Expanded pit strategy planner with rival-stop prediction and tyre-life estimates.
-- Race engineer radio messages and strategic recommendations.
-- More dynamic circuit atmosphere and event-specific broadcast moments.
+### 1.5 — Dynamic Weather & Circuit Events
+- Evolving weather and track-grip conditions during race weekends.
+- Circuit-specific incidents and tactical decisions that reshape race plans.
+- Expanded broadcast moments and visual track-condition feedback.
 
 ### Later
 - Cloud saves and account-based progression.
