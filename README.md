@@ -4,14 +4,15 @@
 
 An original, single-player-first motorsport management game prototype designed for mobile and desktop browsers.
 
-## Version 0.9.0 — Visual Overhaul & Team Legacy
+## Version 1.1.0 — Track Atmosphere & Race Replays
 
-- Added a canvas-rendered race broadcast scene with a winding circuit, track surface, kerbs, grandstands, trackside scenery, team car and rival car illustrations.
-- Race scene adapts to event conditions with rain streaks in light rain and heat haze accents in hot races.
-- Custom team livery colour now appears on the rendered player car and across the interface.
-- Replaced the garage CSS mock-up with a detailed rendered AG-01 car display and team livery label.
-- Added an illustrated overview car panel and improved responsive race-scene presentation.
-- Version 0.8 identity, sponsor negotiations, accessibility settings, career achievements, rival progression and driver-market refresh retained.
+- Expanded circuit scenery with animated grandstand crowd details and stronger trackside depth.
+- Added event-specific daylight, sunset and night lighting palettes to the live race scene.
+- Added car shadow treatment and visible tyre-wear haze as the tyres degrade.
+- Added a last-lap replay archive with up to eight lap snapshots per race.
+- Added replay camera presentation modes and previous/next lap navigation, available during the race and from the results screen.
+- Preserved the Version 1.0 race start, broadcast camera, pit-stop and podium presentation, alongside all career, team and championship systems.
+- Save migration advances from Version 1.0 to Version 1.1.
 
 ## Version 1.0.0 — Race Broadcast & Career Presentation
 
@@ -86,7 +87,7 @@ An original, single-player-first motorsport management game prototype designed f
 
 ## Run it
 
-Open `index.html` in a modern browser. No build tools or dependencies are required. Progress is saved in the current browser/device using local storage. Existing Version 0.9 and earlier career saves are migrated when available.
+Open `index.html` in a modern browser. No build tools or dependencies are required. Progress is saved in the current browser/device using local storage. Existing Version 1.0 and earlier career saves are migrated when available.
 
 ## Files
 
@@ -103,10 +104,10 @@ Open `index.html` in a modern browser. No build tools or dependencies are requir
 
 ## Roadmap
 
-### 1.1 — Track Atmosphere & Race Replays
-- Deeper animated circuit environments, spectator movement and time-of-day lighting.
-- Lap replay and race highlights.
-- Expanded car damage and visual tyre wear.
+### 1.2 — Visual Car Evolution & Championship Broadcast
+- Visible car development and damage progression.
+- Expanded championship broadcast presentation and trackside camera moments.
+- More varied track environments and race atmosphere.
 
 ### Later
 - Cloud saves and account-based progression.
