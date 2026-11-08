@@ -119,3 +119,6 @@ body.reduced-motion .pit-animation *,body.reduced-motion .podium-enter *{animati
 @keyframes position-flash{50%{transform:translateY(-3px);filter:brightness(1.5)}}
 @media(max-width:520px){.race-control-strip,.position-callout{bottom:38px;font-size:7px;padding:5px 6px;max-width:44%}.paddock-car{left:43%}}
 @media(prefers-reduced-motion:reduce){.crew-figure,.paddock-car,.position-callout.position-change{animation:none}}
+
+/* Version 1.4 — strategy desk and engineer radio */
+.strategy-intel{margin:12px 0;padding:12px;border:1px solid rgba(84,214,160,.3);border-radius:6px;background:linear-gradient(135deg,rgba(84,214,160,.08),rgba(17,27,38,.6));display:grid;gap:8px}.intel-heading{display:flex;justify-content:space-between;align-items:center;gap:8px}.intel-heading>b{font:800 9px Inter;color:var(--green);letter-spacing:.8px}.strategy-intel>p{margin:0;color:var(--text);font-size:11px;line-height:1.5}.intel-rivals{display:grid;gap:5px}.intel-rival{display:flex;justify-content:space-between;gap:8px;padding:6px 8px;background:rgba(4,10,16,.35);font-size:9px}.intel-rival span{color:var(--muted);font-weight:800;letter-spacing:.5px}.engineer-radio{margin:12px 0;padding:10px 12px;border-left:3px solid var(--green);background:rgba(84,214,160,.08);color:#c8f5df;font-size:10px;font-weight:800;letter-spacing:.45px;line-height:1.5;min-height:38px}
