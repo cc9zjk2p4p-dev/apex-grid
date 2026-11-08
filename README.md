@@ -13,6 +13,15 @@ An original, single-player-first motorsport management game prototype designed f
 - Added an illustrated overview car panel and improved responsive race-scene presentation.
 - Version 0.8 identity, sponsor negotiations, accessibility settings, career achievements, rival progression and driver-market refresh retained.
 
+## Version 1.0.0 — Race Broadcast & Career Presentation
+
+- Added a five-light race-start sequence with a lights-out launch, live race-state messaging, and a reduced-motion timing path.
+- Added three broadcast camera presentations that can be cycled during live racing.
+- Added a pit-stop broadcast moment with animated crew overlay and visual car emphasis while fresh tyres are fitted.
+- Added an animated post-race podium presentation.
+- Preserved the eight-round championship, team identity, sponsor negotiations, accessibility preferences, career archive, achievements, and rival development.
+- Save migration advances from Version 0.9 to Version 1.0.
+
 ## Version 0.8.0 — Team Identity & Long-Term Career
 
 - Custom team name and primary colour, reflected in team and race presentation.
@@ -77,7 +86,7 @@ An original, single-player-first motorsport management game prototype designed f
 
 ## Run it
 
-Open `index.html` in a modern browser. No build tools or dependencies are required. Progress is saved in the current browser/device using local storage. Existing Version 0.8 and earlier career saves are migrated when available.
+Open `index.html` in a modern browser. No build tools or dependencies are required. Progress is saved in the current browser/device using local storage. Existing Version 0.9 and earlier career saves are migrated when available.
 
 ## Files
 
@@ -94,10 +103,10 @@ Open `index.html` in a modern browser. No build tools or dependencies are requir
 
 ## Roadmap
 
-### 1.0 — Race Broadcast & Career Presentation
-- Animated camera cuts, pit lane and race-start sequences.
-- Expanded trackside environments, crowd animation and lighting transitions.
-- More detailed car liveries and garage inspection views.
+### 1.1 — Track Atmosphere & Race Replays
+- Deeper animated circuit environments, spectator movement and time-of-day lighting.
+- Lap replay and race highlights.
+- Expanded car damage and visual tyre wear.
 
 ### Later
 - Cloud saves and account-based progression.
