@@ -4,6 +4,15 @@
 
 An original, single-player-first motorsport management game prototype designed for mobile and desktop browsers.
 
+## Version 0.9.0 — Visual Overhaul & Team Legacy
+
+- Added a canvas-rendered race broadcast scene with a winding circuit, track surface, kerbs, grandstands, trackside scenery, team car and rival car illustrations.
+- Race scene adapts to event conditions with rain streaks in light rain and heat haze accents in hot races.
+- Custom team livery colour now appears on the rendered player car and across the interface.
+- Replaced the garage CSS mock-up with a detailed rendered AG-01 car display and team livery label.
+- Added an illustrated overview car panel and improved responsive race-scene presentation.
+- Version 0.8 identity, sponsor negotiations, accessibility settings, career achievements, rival progression and driver-market refresh retained.
+
 ## Version 0.8.0 — Team Identity & Long-Term Career
 
 - Custom team name and primary colour, reflected in team and race presentation.
@@ -68,7 +77,7 @@ An original, single-player-first motorsport management game prototype designed f
 
 ## Run it
 
-Open `index.html` in a modern browser. No build tools or dependencies are required. Progress is saved in the current browser/device using local storage. Existing Version 0.7 and earlier career saves are migrated when available.
+Open `index.html` in a modern browser. No build tools or dependencies are required. Progress is saved in the current browser/device using local storage. Existing Version 0.8 and earlier career saves are migrated when available.
 
 ## Files
 
@@ -85,10 +94,10 @@ Open `index.html` in a modern browser. No build tools or dependencies are requir
 
 ## Roadmap
 
-### 0.9 — Deeper Commercial Strategy & Team Legacy
-- Negotiable multi-year sponsor contracts and partner reputation.
-- Expanded academy, reserve-driver and rival transfer systems.
-- More detailed team facilities and season objectives.
+### 1.0 — Race Broadcast & Career Presentation
+- Animated camera cuts, pit lane and race-start sequences.
+- Expanded trackside environments, crowd animation and lighting transitions.
+- More detailed car liveries and garage inspection views.
 
 ### Later
 - Cloud saves and account-based progression.
