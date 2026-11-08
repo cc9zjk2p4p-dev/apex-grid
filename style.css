@@ -35,3 +35,10 @@ footer{height:65px;border-top:1px solid var(--line);display:flex;align-items:cen
 body.reduced-motion *,body.reduced-motion *::before,body.reduced-motion *::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
 body.high-contrast{--panel:#172432;--line:#647687;--muted:#c0ccd6}
 body.high-contrast .muted,body.high-contrast .team-identity-panel label,body.high-contrast .settings-panel label{color:#d1dbe3}
+
+.sponsor-offers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:10px}
+.sponsor-offer{display:grid;gap:5px;text-align:left;padding:9px;white-space:normal}
+.sponsor-offer b{font-size:10px}.sponsor-offer small{font-size:9px;color:var(--muted);font-weight:600}
+.sponsor-offer:disabled{opacity:.55;border-color:var(--red)}
+.sponsor-note{font-size:10px;line-height:1.5}
+@media(max-width:560px){.sponsor-offers{grid-template-columns:1fr}}
