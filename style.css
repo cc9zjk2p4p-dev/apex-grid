@@ -55,3 +55,28 @@ body.high-contrast .muted,body.high-contrast .team-identity-panel label,body.hig
 .hero-car .car-body,.mini-car-shape,.garage-car-shape{background:var(--red)!important}
 .hero-panel{background-image:radial-gradient(ellipse at 78% 60%,color-mix(in srgb,var(--red) 17%,transparent),transparent 48%),linear-gradient(110deg,#1a2936,#111b26 58%,#251d24)}
 @media(max-width:640px){.race-scene-wrap{margin-left:-2px;margin-right:-2px}#race-scene{height:205px}.garage-scene-wrap{height:175px}}
+
+/* Version 1.0 — broadcast presentation */
+.race-scene-wrap{isolation:isolate}
+#race-scene{transition:transform .65s cubic-bezier(.2,.75,.25,1),filter .5s}
+#race-scene-wrap[data-camera="1"] #race-scene{transform:scale(1.12) translate(-2%,1%);filter:saturate(1.18) contrast(1.05)}
+#race-scene-wrap[data-camera="2"] #race-scene{transform:scale(1.2) translate(1%,-3%);filter:contrast(1.12) brightness(.92)}
+.camera-switch{position:absolute;top:12px;right:12px;z-index:4;background:rgba(5,12,18,.82);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:4px;padding:8px 10px;font:800 9px Inter;letter-spacing:1px;cursor:pointer;backdrop-filter:blur(8px)}
+.start-lights{position:absolute;z-index:3;left:50%;top:18%;transform:translateX(-50%);display:flex;gap:8px;padding:11px 15px;border:1px solid #71808b;background:linear-gradient(#202c35,#080d12);border-radius:8px;box-shadow:0 8px 24px #0009}
+.start-lights span{width:17px;height:17px;border-radius:50%;background:#321719;border:2px solid #6c3b3c;box-shadow:inset 0 0 5px #000}
+.start-lights.starting span{background:#ff2929;border-color:#ff9999;box-shadow:0 0 13px #ff2424,inset 0 0 5px #fff}
+.start-lights.lights-out span{background:#1cce7b;border-color:#a6ffd0;box-shadow:0 0 15px #20e88b}
+.pit-overlay{position:absolute;inset:0;z-index:3;display:grid;place-items:center;background:rgba(4,9,14,.83);color:#fff;font:900 clamp(17px,4vw,28px) 'Barlow Condensed';letter-spacing:3px;opacity:0;pointer-events:none}
+.pit-animation .pit-overlay{animation:pitFlash 1.45s ease both}
+.pit-animation #race-scene{animation:pitZoom 1.45s ease both}
+@keyframes pitFlash{0%,100%{opacity:0}12%,78%{opacity:1}}
+@keyframes pitZoom{20%,75%{transform:scale(1.07);filter:brightness(.7) saturate(.7)}}
+.podium-scene{position:relative;min-height:175px;margin:18px 0;padding:18px 12px 0;display:flex;align-items:flex-end;justify-content:center;gap:9px;overflow:hidden;border:1px solid #344554;border-radius:8px;background:radial-gradient(ellipse at 50% 15%,color-mix(in srgb,var(--red) 25%,transparent),transparent 60%),linear-gradient(135deg,#1d2e3b,#0a1119)}
+.podium-place{position:relative;width:min(27%,145px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border:1px solid #647786;background:linear-gradient(145deg,#405363,#1c2934);font:900 10px Inter;text-align:center;padding:10px 4px;overflow:hidden}
+.podium-place b{font:900 35px 'Barlow Condensed';color:#fff}.podium-place span{font-size:8px;letter-spacing:.7px;overflow-wrap:anywhere}
+.podium-place.p1{height:112px;border-color:#e8c36f;background:linear-gradient(145deg,#826a39,#30291e)}.podium-place.p2{height:78px}.podium-place.p3{height:62px}
+.podium-confetti{position:absolute;top:12px;left:0;right:0;text-align:center;color:var(--red2);font-size:22px;letter-spacing:10px;animation:confettiDrop 1.2s ease both}
+.podium-enter .podium-place{animation:podiumRise .65s cubic-bezier(.2,.8,.2,1) both}.podium-enter .p1{animation-delay:.12s}.podium-enter .p3{animation-delay:.22s}
+@keyframes podiumRise{from{transform:translateY(90px);opacity:0}to{transform:translateY(0);opacity:1}}@keyframes confettiDrop{from{transform:translateY(-30px);opacity:0}to{transform:translateY(0);opacity:1}}
+@media(max-width:560px){.start-lights{gap:5px;padding:8px 9px}.start-lights span{width:13px;height:13px}.camera-switch{top:8px;right:8px;padding:7px;font-size:8px}.podium-scene{min-height:155px}}
+body.reduced-motion .pit-animation *,body.reduced-motion .podium-enter *{animation:none!important}
