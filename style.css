@@ -99,3 +99,23 @@ body.reduced-motion .pit-animation *,body.reduced-motion .podium-enter *{animati
 .damage-panel{display:grid;gap:8px}.damage-head{display:flex;justify-content:space-between;align-items:center}.damage-head>b{font:800 10px Inter;letter-spacing:1px;color:var(--gold)}
 .damage-track{height:8px;background:#273542;border-radius:8px;overflow:hidden}.damage-track span{display:block;width:0;height:100%;background:linear-gradient(90deg,#e5c36b,#e66b4c,#d83a36);transition:width .35s}
 .damage-panel>small{color:var(--muted);font-size:9px;letter-spacing:.5px}.damage-panel>small b{color:var(--text)}
+
+/* Version 1.3 — paddock life and race-control broadcast */
+.paddock-strip{height:82px;position:relative;overflow:hidden;margin-top:10px;border:1px solid var(--line);border-radius:6px;background:linear-gradient(180deg,#1a2935 0 65%,#101820 65%);isolation:isolate}
+.paddock-strip:before{content:"";position:absolute;left:0;right:0;bottom:13px;height:2px;background:repeating-linear-gradient(90deg,rgba(235,241,244,.55) 0 18px,transparent 18px 34px);opacity:.45}
+.paddock-label,.paddock-status{position:absolute;top:8px;z-index:3;font-size:8px;font-weight:900;letter-spacing:1px;color:#b8c8d1}
+.paddock-label{left:10px}.paddock-status{right:10px;color:#8bd6b2}
+.paddock-car{position:absolute;left:46%;bottom:19px;width:65px;height:17px;border-radius:48% 42% 35% 35%;background:var(--red,#f04a46);box-shadow:inset 0 4px rgba(255,255,255,.22),0 5px 0 -2px #080d13;animation:paddock-car-bob 2.4s ease-in-out infinite}
+.paddock-car:before,.paddock-car:after{content:"";position:absolute;top:4px;width:10px;height:10px;background:#080d13;border-radius:2px}.paddock-car:before{left:8px}.paddock-car:after{right:8px}
+.crew-figure{position:absolute;bottom:17px;width:7px;height:23px;border-radius:5px 5px 2px 2px;background:#d9e4ed;transform-origin:bottom center;animation:crew-service 1.1s ease-in-out infinite alternate}
+.crew-figure:before{content:"";position:absolute;top:-6px;left:1px;width:5px;height:5px;border-radius:50%;background:#e6bd87}
+.crew-one{left:39%;animation-delay:-.3s}.crew-two{left:57%;background:#e7b74f;animation-delay:-.7s}.crew-three{left:63%;animation-delay:-.1s}
+.pit-lane-mark{position:absolute;left:12%;right:12%;bottom:12px;height:1px;background:rgba(255,255,255,.12)}
+@keyframes crew-service{from{transform:rotate(-12deg) translateY(0)}to{transform:rotate(15deg) translateY(-3px)}}
+@keyframes paddock-car-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+.race-control-strip{position:absolute;left:12px;bottom:42px;z-index:4;padding:6px 9px;background:rgba(8,14,21,.88);border-left:3px solid #7bd6a7;color:#c7f5dc;font-size:8px;font-weight:900;letter-spacing:.9px;max-width:75%}
+.position-callout{position:absolute;right:12px;bottom:42px;z-index:4;padding:6px 9px;background:rgba(8,14,21,.88);border-right:3px solid #8ca7ba;color:#d8e5ed;font-size:8px;font-weight:900;letter-spacing:.7px;text-align:right}
+.position-callout.position-change{border-color:var(--red);color:#fff;background:rgba(119,31,32,.92);animation:position-flash .55s ease-in-out 2}
+@keyframes position-flash{50%{transform:translateY(-3px);filter:brightness(1.5)}}
+@media(max-width:520px){.race-control-strip,.position-callout{bottom:38px;font-size:7px;padding:5px 6px;max-width:44%}.paddock-car{left:43%}}
+@media(prefers-reduced-motion:reduce){.crew-figure,.paddock-car,.position-callout.position-change{animation:none}}
