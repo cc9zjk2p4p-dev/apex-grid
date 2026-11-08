@@ -1,5 +1,14 @@
 # Apex Grid
 
+## Version 1.4.0 — Race Weekend Immersion & Strategy Intelligence
+
+- Added a pre-race strategy desk estimating tyre stint life from compound, circuit wear, and event conditions.
+- Added predicted rival pit windows and an engineer plan that applies a recommended starting compound and balanced race approach.
+- Added live race-engineer radio guidance for tyre degradation, pit windows, rival stops, and final-lap calls.
+- Preserved the animated paddock, race-control broadcast, evolving car visuals, damage and repair model, lap replays, and career progression.
+- Save migration advances from Version 1.3 to Version 1.4.
+
+
 **Own the race. Master the strategy. Become the champion.**
 
 An original, single-player-first motorsport management game prototype designed for mobile and desktop browsers.
