@@ -80,3 +80,11 @@ body.high-contrast .muted,body.high-contrast .team-identity-panel label,body.hig
 @keyframes podiumRise{from{transform:translateY(90px);opacity:0}to{transform:translateY(0);opacity:1}}@keyframes confettiDrop{from{transform:translateY(-30px);opacity:0}to{transform:translateY(0);opacity:1}}
 @media(max-width:560px){.start-lights{gap:5px;padding:8px 9px}.start-lights span{width:13px;height:13px}.camera-switch{top:8px;right:8px;padding:7px;font-size:8px}.podium-scene{min-height:155px}}
 body.reduced-motion .pit-animation *,body.reduced-motion .podium-enter *{animation:none!important}
+
+/* Version 1.1 — circuit atmosphere and lap replay */
+.replay-trigger{margin:12px 0;width:100%}.replay-panel{margin:16px 0;animation:panelIn .3s ease-out}.replay-panel .race-scene-wrap{margin-top:12px}.replay-controls{display:flex;gap:9px;margin-top:12px}.replay-controls button{flex:1}
+#replay-scene{display:block;width:100%;height:clamp(190px,34vw,290px)}
+#replay-scene-wrap[data-camera="1"] #replay-scene{transform:scale(1.12) translate(-2%,1%)}
+#replay-scene-wrap[data-camera="2"] #replay-scene{transform:scale(1.2) translate(1%,-3%)}
+#race-scene{filter:saturate(1.08) contrast(1.03)}
+@media(max-width:560px){.replay-controls{flex-direction:column}.replay-controls button{width:100%}}
