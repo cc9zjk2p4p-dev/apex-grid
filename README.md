@@ -1,5 +1,14 @@
 # Apex Grid
 
+## Version 1.5.0 — Dynamic Weather & Circuit Events
+
+- Added evolving race weather, including rain moving onto and clearing from the circuit.
+- Track grip changes with weather and feeds into race pace, tyre wear, and strategic decisions.
+- Added circuit-specific incident calls for street, technical, and high-speed venues, with risk-versus-reward driver choices.
+- Added live track-condition feedback and weather snapshots in lap replays.
+- Save migration advances from Version 1.4 to Version 1.5.
+
+
 ## Version 1.4.0 — Race Weekend Immersion & Strategy Intelligence
 
 - Added a pre-race strategy desk estimating tyre stint life from compound, circuit wear, and event conditions.
@@ -112,10 +121,10 @@ Open `index.html` in a modern browser. No build tools or dependencies are requir
 
 ## Roadmap
 
-### 1.5 — Dynamic Weather & Circuit Events
-- Evolving weather and track-grip conditions during race weekends.
-- Circuit-specific incidents and tactical decisions that reshape race plans.
-- Expanded broadcast moments and visual track-condition feedback.
+### 1.6 — Race Strategy & Team Operations
+- Deeper multi-stop strategy planning and pit-window flexibility.
+- Expanded race engineer and pit-crew coordination.
+- More detailed team performance analytics across a championship season.
 
 ### Later
 - Cloud saves and account-based progression.
