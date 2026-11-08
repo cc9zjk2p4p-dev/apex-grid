@@ -1,3 +1,34 @@
+# Apex Grid — Godot 4 migration
+
+**Native project foundation:** Godot 4.3+ · iOS first · Android planned
+
+The original browser prototype remains in the repository. A native Godot project is being developed alongside it in `godot/` so the migration can happen incrementally without losing the existing playable prototype or its feature history.
+
+## Open the Godot project
+
+1. Install Godot 4.3 or newer.
+2. In the Godot Project Manager, choose **Import**.
+3. Select `godot/project.godot` from this repository.
+4. Open the project and press **F6/F5** (or the Play button).
+
+## Native foundation milestone
+
+- Dark motorsport management interface with Garage, Race Weekend, and Championship sections.
+- Local career save for credits and car development upgrades.
+- Animated top-down circuit session with player and rival cars.
+- Eight-lap test race, start/pause controls, chequered flag and a small completion reward.
+- Landscape-first layout suitable for the initial iOS racing interface.
+
+This is an early native foundation, not yet a full port of the browser game's career systems. Championship standings, drivers, staff, dynamic weather, detailed strategy, replay archive, and the full broadcast presentation are planned migration stages.
+
+## iOS build notes
+
+The project is configured for the mobile renderer and landscape presentation. To create an iOS build, use Godot's iOS export template and export from a Mac with Xcode installed. An Apple signing team, provisioning profile, and bundle identifier configuration are required for device installation and App Store distribution. No signing credentials are stored in this repository.
+
+See [GODOT_MIGRATION.md](GODOT_MIGRATION.md) for the migration plan and current limitations.
+
+---
+
 # Apex Grid
 
 ## Version 1.5.0 — Dynamic Weather & Circuit Events
