@@ -1,0 +1,18 @@
+# Godot generated files
+.godot/
+**/.godot/
+.export/
+**/.export/
+*.translation
+
+# Local exports and signing material
+/build/
+/exports/
+/ios/
+*.mobileprovision
+*.p12
+*.keystore
+
+# Editor / OS files
+.DS_Store
+Thumbs.db
