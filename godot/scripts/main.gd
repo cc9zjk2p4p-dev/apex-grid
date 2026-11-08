@@ -83,14 +83,17 @@ func _build_shell() -> void:
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	root.add_child(scroll)
+	var page_margin := MarginContainer.new()
+	page_margin.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	page_margin.add_theme_constant_override("margin_left", 22)
+	page_margin.add_theme_constant_override("margin_right", 22)
+	page_margin.add_theme_constant_override("margin_top", 18)
+	page_margin.add_theme_constant_override("margin_bottom", 24)
+	scroll.add_child(page_margin)
 	content = VBoxContainer.new()
 	content.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	content.add_theme_constant_override("separation", 14)
-	content.add_theme_constant_override("margin_left", 22)
-	content.add_theme_constant_override("margin_right", 22)
-	content.add_theme_constant_override("margin_top", 18)
-	content.add_theme_constant_override("margin_bottom", 24)
-	scroll.add_child(content)
+	page_margin.add_child(content)
 	status_label = Label.new()
 	status_label.custom_minimum_size.y = 34
 	status_label.add_theme_color_override("font_color", GREEN)
