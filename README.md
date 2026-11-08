@@ -4,6 +4,16 @@
 
 An original, single-player-first motorsport management game prototype designed for mobile and desktop browsers.
 
+## Version 0.8.0 — Team Identity & Long-Term Career
+
+- Custom team name and primary colour, reflected in the game interface.
+- Team identity is saved with the career and carried across seasons.
+- New race-experience settings: optional sound feedback, reduced motion, and high-contrast interface mode.
+- Career achievement tracking for first victory, first podium, five wins, career points milestones, and completed seasons.
+- Rival teams improve their pace gradually after each completed season.
+- Driver market refreshes after each season, with improved prospects and rising recruitment costs.
+- Version 0.7 driver market, career archive, race-control incidents, eight-round calendar, and all previous management systems retained.
+
 ## Version 0.7.0 — Career & Race Presentation
 
 - Driver market with three recruitable prospects, distinct attributes, signing costs, and lead-driver replacement.
@@ -57,7 +67,7 @@ An original, single-player-first motorsport management game prototype designed f
 
 ## Run it
 
-Open `index.html` in a modern browser. No build tools or dependencies are required. Progress is saved in the current browser/device using local storage. Existing Version 0.6 career saves are migrated when available.
+Open `index.html` in a modern browser. No build tools or dependencies are required. Progress is saved in the current browser/device using local storage. Existing Version 0.7 and earlier career saves are migrated when available.
 
 ## Files
 
@@ -74,11 +84,10 @@ Open `index.html` in a modern browser. No build tools or dependencies are requir
 
 ## Roadmap
 
-### 0.8 — Team Identity & Long-Term Career
-- Team identity choices and deeper sponsor negotiations.
-- Rival-driver progression and transfer-market refreshes.
-- More detailed season objectives and multi-season achievements.
-- Additional race presentation, sound, and accessibility options.
+### 0.9 — Deeper Commercial Strategy & Team Legacy
+- Negotiable multi-year sponsor contracts and partner reputation.
+- Expanded academy, reserve-driver and rival transfer systems.
+- More detailed team facilities and season objectives.
 
 ### Later
 - Cloud saves and account-based progression.
